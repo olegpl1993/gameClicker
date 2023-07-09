@@ -2,19 +2,55 @@ import { useState } from "react";
 import "./App.scss";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [isStart, setIsStart] = useState(false);
+  const [selectButton, setselectButton] = useState("");
+  const [clickTime, setClickTime] = useState("");
+  const [timeOut, setTimeOut] = useState("");
+  const consoleArgs = () => {
+    !isStart &&
+      console.log("selectButton:", selectButton, "clickTime:", clickTime, "timeOut:", timeOut);
+  };
 
   return (
-    <div className="wrapper">
-      <h1>Game Clicker</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+    <div className="app">
+      <p className="appTitle">Game Clicker</p>
+      <button
+        className="startButton"
+        onClick={() => {
+          consoleArgs();
+          setIsStart(!isStart);
+        }}
+      >
+        {isStart ? "STOP" : "START"}
+      </button>
+      <div className="comandList">
+        <div className="row">
+          <input
+            className="selectButton"
+            type="text"
+            placeholder="Select button"
+            onChange={(e) => setselectButton(e.target.value)}
+          />
+          <input
+            type="number"
+            placeholder="Click Time (ms)"
+            min="0"
+            step="any"
+            onChange={(e) => setClickTime(e.target.value)}
+          />
+        </div>
+
+        <div className="row">
+          <input
+            type="number"
+            placeholder="Time out (ms)"
+            min="0"
+            step="any"
+            onChange={(e) => setTimeOut(e.target.value)}
+          />
+        </div>
+
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </div>
   );
 }
