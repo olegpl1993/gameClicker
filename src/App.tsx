@@ -11,9 +11,15 @@ function App() {
       console.log("selectButton:", selectButton, "clickTime:", clickTime, "timeOut:", timeOut);
   };
 
+  const testClick = () => {
+    console.log("testClick");
+    window.electron.btnClick();
+  }
+
   return (
     <div className="app">
       <p className="appTitle">Game Clicker</p>
+      <button className="testButton" onClick={testClick}>TEST Click</button>
       <button
         className="startButton"
         onClick={() => {

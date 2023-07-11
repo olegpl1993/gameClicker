@@ -1,3 +1,5 @@
+import './script'
+
 function domReady(
   condition: DocumentReadyState[] = ["complete", "interactive"]
 ) {
